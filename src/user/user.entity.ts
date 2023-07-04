@@ -1,16 +1,17 @@
+import { UUID } from 'crypto';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('Users')
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  uid: UUID;
 
   @Column()
-  firstName: string;
+  id: string;
 
   @Column()
-  lastName: string;
+  password: string;
 
-  @Column({ default: true })
-  isActive: boolean;
+  @Column()
+  name: string;
 }
