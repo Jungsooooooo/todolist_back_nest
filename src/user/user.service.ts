@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { UserRepository } from './user.repository';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { UserRepository } from './user.repository';
 import { UUID } from 'crypto';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserService {
-  constructor(private usersRepository: UserRepository) {}
+  constructor(private userRepository: UserRepository) {}
 
-  findAll(id: UUID): Promise<User> {
-    return this.usersRepository.getByUUID(id);
+  getHello(): Promise<User[]> {
+    return this.userRepository.find();
   }
 }
