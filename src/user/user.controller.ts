@@ -7,8 +7,13 @@ import { User } from './user.entity';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Get('/st')
-  getString(): Promise<User[]> {
-    return this.userService.getHello();
+  @Get('/all')
+  getUserAll(): Promise<User[]> {
+    return this.userService.getAll();
+  }
+
+  @Get('/:id')
+  getUser(@Param('id') id: string): Promise<User> {
+    return this.userService.getUser(id);
   }
 }
