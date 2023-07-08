@@ -9,7 +9,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class UserService {
   constructor(private userRepository: UserRepository) {}
 
-  getHello(): Promise<User[]> {
+  getAll(): Promise<User[]> {
     return this.userRepository.find();
+  }
+
+  getUser(id: string): Promise<User | undefined> {
+    return this.userRepository.getByUUID(id);
   }
 }
