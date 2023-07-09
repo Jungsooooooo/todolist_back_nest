@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from './user.repository';
-import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { UUID } from 'crypto';
-import { InjectRepository } from '@nestjs/typeorm';
+import { UserRequestDto } from './user.requestdto';
 
 @Injectable()
 export class UserService {
@@ -15,5 +14,18 @@ export class UserService {
 
   getUser(uid: UUID): Promise<User | undefined> {
     return this.userRepository.getByUUID(uid);
+  }
+
+  async createUser(userRequestDto: UserRequestDto): Promise<User> {
+    const { id, password, name } = userRequestDto;
+
+    const user = this.userRepository.create({
+      id,
+      password,
+      name,
+    });
+    await this.userRepository.save(user);
+
+    return user;
   }
 }
