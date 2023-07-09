@@ -13,7 +13,7 @@ export class UserController {
   }
 
   @Get('/:id')
-  getUser(@Param('id') id: string): Promise<User> {
-    return this.userService.getUser(id);
+  getUser(@Param('id') uid: UUID): Promise<User> {
+    return this.userService.getUser(uid);
   }
 }

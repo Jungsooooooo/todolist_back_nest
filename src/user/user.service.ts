@@ -13,7 +13,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  getUser(id: string): Promise<User | undefined> {
-    return this.userRepository.getByUUID(id);
+  getUser(uid: UUID): Promise<User | undefined> {
+    return this.userRepository.getByUUID(uid);
   }
 }

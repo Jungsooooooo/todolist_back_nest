@@ -11,7 +11,7 @@ export class UserRepository extends Repository<User> {
     super(User, dataSource.createEntityManager());
   }
 
-  public getByUUID(id: string) {
-    return this.findOne({ where: { id } });
+  public getByUUID(uid: UUID) {
+    return this.findOne({ where: { uid } });
   }
 }
