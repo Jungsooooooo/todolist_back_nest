@@ -16,7 +16,7 @@ export class UserService {
     return this.userRepository.getByUUID(uid);
   }
 
-  async createUser(userRequestDto: UserRequestDto): Promise<User> {
+  async createUser(userRequestDto: UserRequestDto) {
     const { id, password, name } = userRequestDto;
 
     const user = this.userRepository.create({
