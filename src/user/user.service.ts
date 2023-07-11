@@ -32,4 +32,9 @@ export class UserService {
   async deleteUser(uid: UUID): Promise<void> {
     this.userRepository.delete(uid);
   }
+
+  async updateUser(uid: UUID, userRequestDto: UserRequestDto): Promise<User> {
+    await this.userRepository.update(uid, userRequestDto);
+    return this.userRepository.getByUUID(uid);
+  }
 }
