@@ -1,5 +1,10 @@
 import { UUID } from 'crypto';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('Todo')
 export class Todo {
@@ -9,9 +14,9 @@ export class Todo {
   @Column()
   do: string;
 
-  @Column()
+  @CreateDateColumn({ type: 'timestamp' })
   startDate: Date;
 
-  @Column()
+  @Column({ type: 'timestamp' })
   endDate: Date;
 }
