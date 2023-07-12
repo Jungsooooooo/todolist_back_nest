@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
@@ -18,6 +18,7 @@ import { UserModule } from './user/user.module';
       entities: ['dist/**/*.entity.{ts,js}'],
       synchronize: true,
     }),
+    TodoModule,
   ],
   controllers: [UserController],
   providers: [UserService],
