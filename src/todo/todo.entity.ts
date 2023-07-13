@@ -4,6 +4,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  IsNull,
 } from 'typeorm';
 
 @Entity('Todo')
@@ -17,6 +18,6 @@ export class Todo {
   @CreateDateColumn({ type: 'timestamp' })
   startDate: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', nullable: true })
   endDate: Date;
 }
