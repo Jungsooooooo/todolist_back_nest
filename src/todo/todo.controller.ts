@@ -13,11 +13,11 @@ import { Todo } from './todo.entity';
 import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
 
-@Controller('todo')
+@Controller('/api/todo')
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
-  @Get('all')
+  @Get('/all')
   getTodoAll(): Promise<Todo[]> {
     return this.todoService.getAll();
   }
