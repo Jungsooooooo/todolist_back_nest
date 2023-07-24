@@ -12,14 +12,15 @@ import { Todo } from './todo.entity';
 
 import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
+import { TodoResponseDto } from './todo.responsedto';
 
 @Controller('/api/todo')
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
   @Get('/all')
-  getTodoAll(): Promise<Todo[]> {
-    return this.todoService.getAll();
+  getTodoAll(): Promise<TodoResponseDto[]> {
+    return this.todoService.getTodoResponse();
   }
 
   @Get('/:id')

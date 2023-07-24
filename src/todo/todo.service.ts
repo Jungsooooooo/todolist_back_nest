@@ -3,6 +3,8 @@ import { TodoRepository } from './todo.repository';
 import { Todo } from './todo.entity';
 import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
+import { TodoResponseDto } from './todo.responsedto';
+import moment from 'moment';
 
 @Injectable()
 export class TodoService {
@@ -36,5 +38,15 @@ export class TodoService {
   async updateTodo(uid: UUID, todoRequestDto): Promise<Todo> {
     await this.todoRepository.update(uid, todoRequestDto);
     return this.todoRepository.getByUUID(uid);
+  }
+
+  async getTodoResponse(): Promise<TodoResponseDto[]> {
+    const entities: Todo[] = await this.todoRepository.find();
+
+    const responseDtos: TodoResponseDto[] = entities.map((entity) => ({
+      todo: entity.do,
+      startDate: entity.startDate,
+    }));
+    return responseDtos;
   }
 }
