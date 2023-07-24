@@ -15,9 +15,9 @@ export class Todo {
   @Column()
   do: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'date' })
   startDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Column({ type: 'date', nullable: true })
   endDate: Date;
 }
