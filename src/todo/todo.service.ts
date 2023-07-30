@@ -18,6 +18,10 @@ export class TodoService {
     return this.todoRepository.getByUUID(uid);
   }
 
+  getDateByYearAndMonth(year: number, month: number): Promise<Todo[]> {
+    return this.todoRepository.getDateByYearAndMonth(year, month);
+  }
+
   async createTodo(todoRequestDto: TodoRequestDto) {
     const { do: string, endDate } = todoRequestDto;
 
