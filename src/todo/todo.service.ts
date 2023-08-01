@@ -23,10 +23,11 @@ export class TodoService {
   }
 
   async createTodo(todoRequestDto: TodoRequestDto) {
-    const { do: string, endDate } = todoRequestDto;
+    const { do: string, startDate, endDate } = todoRequestDto;
 
     const todo = this.todoRepository.create({
       do: string,
+      startDate,
       endDate,
     });
 
@@ -50,6 +51,7 @@ export class TodoService {
     const responseDtos: TodoResponseDto[] = entities.map((entity) => ({
       todo: entity.do,
       startDate: entity.startDate,
+      uid: entity.uid,
     }));
     return responseDtos;
   }

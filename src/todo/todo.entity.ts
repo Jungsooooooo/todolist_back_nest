@@ -15,7 +15,7 @@ export class Todo {
   @Column()
   do: string;
 
-  @CreateDateColumn({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   startDate: Date;
 
   @Column({ type: 'date', nullable: true })
