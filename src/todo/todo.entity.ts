@@ -20,4 +20,7 @@ export class Todo {
 
   @Column({ type: 'date', nullable: true })
   endDate: Date;
+
+  @Column({ default: 'processing' })
+  state: string;
 }

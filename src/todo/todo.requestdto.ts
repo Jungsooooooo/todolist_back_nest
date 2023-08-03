@@ -4,4 +4,6 @@ export class TodoRequestDto {
   startDate: Date;
 
   endDate: Date;
+
+  state: string;
 }

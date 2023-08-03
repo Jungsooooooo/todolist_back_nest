@@ -6,4 +6,6 @@ export class TodoResponseDto {
   startDate: Date;
 
   uid: UUID;
+
+  state: string;
 }
