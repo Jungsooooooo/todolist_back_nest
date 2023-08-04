@@ -52,6 +52,7 @@ export class TodoService {
       todo: entity.do,
       startDate: entity.startDate,
       uid: entity.uid,
+      state: entity.state,
     }));
     return responseDtos;
   }
