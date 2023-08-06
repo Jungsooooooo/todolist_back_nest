@@ -18,6 +18,13 @@ export class TodoRepository extends Repository<Todo> {
     const startDate = new Date(year, month - 1, 1);
     const endDate = new Date(year, month, 0);
 
-    return this.find({ where: { startDate: Between(startDate, endDate) } });
+    return this.find({
+      where: { startDate: Between(startDate, endDate) },
+      order: { startDate: 'ASC' },
+    });
+  }
+
+  public getAll() {
+    return this.find({ order: { startDate: 'DESC' } });
   }
 }

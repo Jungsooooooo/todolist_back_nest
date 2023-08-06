@@ -11,7 +11,7 @@ export class TodoService {
   constructor(private todoRepository: TodoRepository) {}
 
   getAll(): Promise<Todo[]> {
-    return this.todoRepository.find();
+    return this.todoRepository.getAll();
   }
 
   getTodo(uid: UUID): Promise<Todo> {
