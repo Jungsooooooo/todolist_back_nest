@@ -56,4 +56,8 @@ export class TodoService {
     }));
     return responseDtos;
   }
+
+  getDateByDate(year: number, month: number, date: number): Promise<Todo[]> {
+    return this.todoRepository.getDataByYearAndMonthAndDate(year, month, date);
+  }
 }

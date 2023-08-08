@@ -27,4 +27,14 @@ export class TodoRepository extends Repository<Todo> {
   public getAll() {
     return this.find({ order: { startDate: 'DESC' } });
   }
+
+  public getDataByYearAndMonthAndDate(
+    year: number,
+    month: number,
+    date: number,
+  ): Promise<Todo[]> {
+    const formatDate = new Date(year + '-' + month + '-' + date);
+
+    return this.find({ where: { startDate: formatDate } });
+  }
 }

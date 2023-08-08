@@ -36,6 +36,15 @@ export class TodoController {
     return this.todoService.getDateByYearAndMonth(year, month);
   }
 
+  @Get('/date/:year/:month/:date')
+  getDataByDate(
+    @Param('year') year: number,
+    @Param('month') month: number,
+    @Param('date') date: number,
+  ): Promise<Todo[]> {
+    return this.todoService.getDateByDate(year, month, date);
+  }
+
   @Post()
   createTodo(@Body() todoRequestDto: TodoRequestDto) {
     return this.todoService.createTodo(todoRequestDto);
