@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 import { User } from './user.entity';
 import { UserRequestDto } from './user.requestdto';
 
-@Controller('user')
+@Controller('/api/user')
 export class UserController {
   constructor(private userService: UserService) {}
 
