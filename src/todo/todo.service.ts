@@ -23,12 +23,13 @@ export class TodoService {
   }
 
   async createTodo(todoRequestDto: TodoRequestDto) {
-    const { do: string, startDate, endDate } = todoRequestDto;
+    const { do: string, startDate, endDate, user: User } = todoRequestDto;
 
     const todo = this.todoRepository.create({
       do: string,
       startDate,
       endDate,
+      user: User,
     });
 
     await this.todoRepository.save(todo);
