@@ -5,7 +5,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   IsNull,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import { User } from 'src/user/user.entity';
 
 @Entity('Todo')
 export class Todo {
@@ -23,4 +26,8 @@ export class Todo {
 
   @Column({ default: 'processing' })
   state: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_uid' })
+  user: User;
 }
