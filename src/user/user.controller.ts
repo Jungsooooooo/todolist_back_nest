@@ -31,6 +31,11 @@ export class UserController {
     return this.userService.createUser(userRequestDto);
   }
 
+  @Post('/login')
+  loginUser(@Body() userRequestDto: UserRequestDto) {
+    return this.userService.loginUser(userRequestDto);
+  }
+
   @Delete('/:id')
   deleteUser(@Param('id') uid: UUID): Promise<void> {
     return this.userService.deleteUser(uid);
