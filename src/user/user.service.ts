@@ -3,6 +3,7 @@ import { UserRepository } from './user.repository';
 import { User } from './user.entity';
 import { UUID } from 'crypto';
 import { UserRequestDto } from './user.requestdto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -16,9 +17,12 @@ export class UserService {
     return this.userRepository.getByUUID(uid);
   }
 
-  async createUser(userRequestDto: UserRequestDto) {
-    const { id, password, name } = userRequestDto;
+  getUserForLogin(userRequestDto: UserRequestDto) {}
 
+  async createUser(userRequestDto: UserRequestDto) {
+    let { id, password, name } = userRequestDto;
+    const salt = await bcrypt.genSalt();
+    password = await bcrypt.hash(password, salt);
     const user = this.userRepository.create({
       id,
       password,
@@ -36,5 +40,10 @@ export class UserService {
   async updateUser(uid: UUID, userRequestDto: UserRequestDto): Promise<User> {
     await this.userRepository.update(uid, userRequestDto);
     return this.userRepository.getByUUID(uid);
+  }
+
+  async loginUser(userRequestDto: UserRequestDto): Promise<User> {
+    const user = await this.userRepository.getByIdAndPassword(userRequestDto);
+    return user;
   }
 }
