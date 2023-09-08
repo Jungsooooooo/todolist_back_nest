@@ -6,7 +6,7 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   uid: UUID;
 
-  @Column()
+  @Column({ unique: true })
   id: string;
 
   @Column()
