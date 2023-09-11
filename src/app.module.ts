@@ -9,6 +9,7 @@ import { AuthentificationModule } from './authentification/authentification.modu
 @Module({
   imports: [
     UserModule,
+    AuthentificationModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
