@@ -19,8 +19,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
-  async validate(payload: { userId: string }) {
-    const { userId } = payload;
+  async validate(userId: string) {
     const user: User = await this.userRepository.findOne({
       where: { id: userId },
     });

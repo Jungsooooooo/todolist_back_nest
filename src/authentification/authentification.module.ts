@@ -7,11 +7,14 @@ import { PassportModule } from '@nestjs/passport/dist';
 import AuthService from './authentification.service';
 import { UserService } from 'src/user/user.service';
 import { UserRepository } from 'src/user/user.repository';
+import { LocalStrategy } from './local.strategy';
+import { JwtStrategy } from './jwt.strategy';
+import { jwtConstants } from './constants';
 
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'Secret1234',
+      secret: jwtConstants.secret,
       signOptions: {
         expiresIn: 3600,
       },
@@ -22,7 +25,13 @@ import { UserRepository } from 'src/user/user.repository';
     }),
   ],
   controllers: [AuthentificationController],
-  providers: [AuthService, UserService, UserRepository],
+  providers: [
+    AuthService,
+    UserService,
+    UserRepository,
+    LocalStrategy,
+    JwtStrategy,
+  ],
   exports: [AuthService],
 })
 export class AuthentificationModule {}
