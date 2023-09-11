@@ -19,17 +19,17 @@ export class AuthService {
     return user;
   }
 
-  async validateUser(userRequestDto: UserRequestDto): Promise<any> {
+  async validateUser1(userRequestDto: UserRequestDto): Promise<any> {
     const user = await this.userRepository.getByIdAndPassword(userRequestDto);
     return user;
   }
 
-  async signIn(userRequestDto: UserRequestDto) {
+  async validateUser(userRequestDto: UserRequestDto) {
     const user = await this.userRepository.getByIdAndPassword(userRequestDto);
     if (user !== null) {
       const userId = user.id;
       const payload = { userId };
-      const accessToken = await this.jwtService.sign(payload);
+      const accessToken = this.jwtService.sign(payload);
 
       return { accessToken: accessToken };
     } else {
