@@ -15,6 +15,8 @@ import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
 import { TodoResponseDto } from './todo.responsedto';
 import { JwtAuthGuard } from 'src/authentification/auth.guard';
+
+@Controller('/api/todo')
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
