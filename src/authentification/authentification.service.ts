@@ -31,7 +31,7 @@ export class AuthService {
       const payload = { userId };
       const accessToken = this.jwtService.sign(payload);
 
-      return { accessToken: accessToken };
+      return { accessToken: accessToken, uid: user.uid };
     } else {
       throw new UnauthorizedException('login falied');
     }
