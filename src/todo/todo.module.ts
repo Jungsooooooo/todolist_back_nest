@@ -5,11 +5,12 @@ import { Todo } from './todo.entity';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TodoRepository } from './todo.repository';
+import { UserRepository } from 'src/user/user.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Todo])],
   controllers: [TodoController],
-  providers: [TodoService, TodoRepository],
+  providers: [TodoService, TodoRepository, UserRepository],
   exports: [TodoService, TodoRepository],
 })
 export class TodoModule {}
