@@ -5,10 +5,16 @@ import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
 import { TodoResponseDto } from './todo.responsedto';
 import moment from 'moment';
+import { User } from 'src/user/user.entity';
+import { TodoRequestUidDto } from './todo.requestuiddto';
+import { UserRepository } from 'src/user/user.repository';
 
 @Injectable()
 export class TodoService {
-  constructor(private todoRepository: TodoRepository) {}
+  constructor(
+    private todoRepository: TodoRepository,
+    private userRepository: UserRepository,
+  ) {}
 
   getAll(): Promise<Todo[]> {
     return this.todoRepository.getAll();
@@ -18,8 +24,11 @@ export class TodoService {
     return this.todoRepository.getByUUID(uid);
   }
 
-  getDateByYearAndMonth(year: number, month: number): Promise<Todo[]> {
-    return this.todoRepository.getDateByYearAndMonth(year, month);
+  async getDateByYearAndMonth(
+    todoRequestUidDto: TodoRequestUidDto,
+  ): Promise<Todo[]> {
+    const user = await this.userRepository.getByUUID(todoRequestUidDto.user);
+    return this.todoRepository.getDateByYearAndMonth(todoRequestUidDto, user);
   }
 
   async createTodo(todoRequestDto: TodoRequestDto) {

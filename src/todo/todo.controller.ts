@@ -15,6 +15,8 @@ import { UUID } from 'crypto';
 import { TodoRequestDto } from './todo.requestdto';
 import { TodoResponseDto } from './todo.responsedto';
 import { JwtAuthGuard } from 'src/authentification/auth.guard';
+import { User } from 'src/user/user.entity';
+import { TodoRequestUidDto } from './todo.requestuiddto';
 
 @Controller('/api/todo')
 export class TodoController {
@@ -32,13 +34,12 @@ export class TodoController {
     return this.todoService.getTodo(uid);
   }
 
-  @Get('/:year/:month')
+  @Post('/findtododata')
   @UseGuards(JwtAuthGuard)
   getDataByYearAndMonth(
-    @Param('year') year: number,
-    @Param('month') month: number,
+    @Body() todoRequestUidDto: TodoRequestUidDto,
   ): Promise<Todo[]> {
-    return this.todoService.getDateByYearAndMonth(year, month);
+    return this.todoService.getDateByYearAndMonth(todoRequestUidDto);
   }
 
   @Get('/date/:year/:month/:date')
