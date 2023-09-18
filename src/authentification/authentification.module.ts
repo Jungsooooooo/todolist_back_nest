@@ -10,6 +10,8 @@ import { UserRepository } from 'src/user/user.repository';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { jwtConstants } from './constants';
+import { TodoRepository } from 'src/todo/todo.repository';
+import { TodoService } from 'src/todo/todo.service';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { jwtConstants } from './constants';
     AuthService,
     UserService,
     UserRepository,
+    TodoRepository,
+    TodoService,
     LocalStrategy,
     JwtStrategy,
   ],
