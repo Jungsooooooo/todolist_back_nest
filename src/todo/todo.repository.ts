@@ -7,6 +7,7 @@ import { User } from 'src/user/user.entity';
 import { TodoRequestDto } from './todo.requestdto';
 import { TodoRequestUidDto } from './todo.requestuiddto';
 import { todo } from 'node:test';
+import { TodoRequestDateUidDto } from './todo.requestdateuid';
 
 @Injectable()
 export class TodoRepository extends Repository<Todo> {
@@ -42,12 +43,17 @@ export class TodoRepository extends Repository<Todo> {
   }
 
   public getDataByYearAndMonthAndDate(
-    year: number,
-    month: number,
-    date: number,
+    todoRequestDateUidDto: TodoRequestDateUidDto,
+    user: User,
   ): Promise<Todo[]> {
-    const formatDate = new Date(year + '-' + month + '-' + date);
+    const formatDate = new Date(
+      todoRequestDateUidDto.year +
+        '-' +
+        todoRequestDateUidDto.month +
+        '-' +
+        todoRequestDateUidDto.date,
+    );
 
-    return this.find({ where: { startDate: formatDate } });
+    return this.find({ where: { startDate: formatDate, user: user } });
   }
 }

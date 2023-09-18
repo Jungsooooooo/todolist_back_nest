@@ -8,6 +8,7 @@ import moment from 'moment';
 import { User } from 'src/user/user.entity';
 import { TodoRequestUidDto } from './todo.requestuiddto';
 import { UserRepository } from 'src/user/user.repository';
+import { TodoRequestDateUidDto } from './todo.requestdateuid';
 
 @Injectable()
 export class TodoService {
@@ -67,7 +68,15 @@ export class TodoService {
     return responseDtos;
   }
 
-  getDateByDate(year: number, month: number, date: number): Promise<Todo[]> {
-    return this.todoRepository.getDataByYearAndMonthAndDate(year, month, date);
+  async getDateByDate(
+    todoRequestDateUidDto: TodoRequestDateUidDto,
+  ): Promise<Todo[]> {
+    const user = await this.userRepository.getByUUID(
+      todoRequestDateUidDto.user,
+    );
+    return this.todoRepository.getDataByYearAndMonthAndDate(
+      todoRequestDateUidDto,
+      user,
+    );
   }
 }
