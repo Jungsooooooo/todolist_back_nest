@@ -32,6 +32,10 @@ export class UserRepository extends Repository<User> {
       },
     });
 
+    if (user === null) {
+      return null;
+    }
+
     let check = await bcrypt.compare(password, user.password);
     if (check) {
       return user;
