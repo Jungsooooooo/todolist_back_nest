@@ -17,6 +17,10 @@ export class UserService {
     return this.userRepository.getByUUID(uid);
   }
 
+  getUserId(id: string): Promise<User[] | undefined> {
+    return this.userRepository.find({ where: { id: id } });
+  }
+
   getUserForLogin(userRequestDto: UserRequestDto) {}
 
   async createUser(userRequestDto: UserRequestDto) {

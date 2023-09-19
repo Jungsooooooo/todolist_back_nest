@@ -26,6 +26,11 @@ export class UserController {
     return this.userService.getUser(uid);
   }
 
+  @Get('/check/:userid')
+  getUserId(@Param('userid') id: string): Promise<User[]> {
+    return this.userService.getUserId(id);
+  }
+
   @Post()
   createUser(@Body() userRequestDto: UserRequestDto) {
     return this.userService.createUser(userRequestDto);
