@@ -33,5 +33,7 @@ Postgresql과 연동하여 개발함.
 2-4) user 업데이트
 
 3)authentification 권한
+
 3-1)로그인 기능 -> 아이디와 비밀번호를 통해 user가 있으면 토큰 발급.
+
 Jwt와 PassportStrategy를 통해 토큰 발급 구현
