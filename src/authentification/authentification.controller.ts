@@ -10,13 +10,8 @@ export class AuthentificationController {
   constructor(private authService: AuthService) {}
 
   @Post('/login')
+  @Public()
   login(@Body() userRequestdto: UserRequestDto) {
     return this.authService.validateUser(userRequestdto);
-  }
-
-  @Get('/test')
-  @UseGuards(JwtAuthGuard)
-  test() {
-    console.log('hi');
   }
 }
