@@ -4,7 +4,7 @@ Postgresql과 연동하여 개발함.
 
 1.기능 요약
 
-1)Todo 할 일
+### [1)Todo 할 일](https://github.com/Jungsooooooo/todolist_back_nest/blob/master/src/todo/todo.controller.ts)
 
 1-1) Todolist 조회 기능
 
@@ -22,7 +22,7 @@ Postgresql과 연동하여 개발함.
 1-4) Todolist 삭제 기능
 - 제대로 만들지 못한 todolist는 삭제
 
-2)user 유저
+### [2)user 유저](https://github.com/Jungsooooooo/todolist_back_nest/blob/master/src/user/user.controller.ts)
 
 2-1) user
 - 모든 조회
@@ -35,7 +35,7 @@ Postgresql과 연동하여 개발함.
 
 2-4) user 업데이트
 
-3)authentification 권한
+### [3)authentification 권한](https://github.com/Jungsooooooo/todolist_back_nest/blob/master/src/authentification/authentification.controller.ts)
 
 3-1)로그인 기능 -> 아이디와 비밀번호를 통해 user가 있으면 토큰 발급.
 
