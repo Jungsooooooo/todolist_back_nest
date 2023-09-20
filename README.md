@@ -20,13 +20,16 @@ Postgresql과 연동하여 개발함.
 - 제대로 만들지 못한 todolist는 삭제
 
 2)user 유저
+
 2-1) user
 - 모든 조회
 - uid별 조회
 - userid별 조회-> 중복확인을 위해
 
 2-2) user 생성 
+
 2-3) user 삭제
+
 2-4) user 업데이트
 
 3)authentification 권한
